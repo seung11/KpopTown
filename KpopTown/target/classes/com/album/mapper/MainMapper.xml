@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.album.mapper.MainMapper">
+ 
+ 
+ <!-- 메인에 최신등록 제품 보여주기 -->
+<select id="newRelease" resultType="com.album.vo.productVO">
+	select * from tbl_product order by regDate desc limit 20;
+ </select> 
+ 
+ <!-- 메인에 카테고리별 등록 제품 보여주기 -->
+  <select id="mainProduct" resultType="com.album.vo.productVO">
+	 select * from tbl_product 
+	 	 	order by 
+	  goodsNumber desc limit 25;
+ </select>
+ 
+ </mapper>

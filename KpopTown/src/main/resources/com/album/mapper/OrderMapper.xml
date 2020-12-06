@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+ <mapper namespace="com.album.mapper.OrderMapper">
+ 
+
+<!-- 장바구니 -->
+ <insert id="addCart">
+  	insert into tbl_cart 
+  (cartNum,userid,goodsNumber,cartStock)
+   		value 
+  (#{cartNum},#{userid},#{goodsNumber},#{cartStock})
+ </insert>
+  
+   <!-- 장바구니 목록 -->
+  <select id="cartList" resultType="com.album.vo.CartVO">
+  
+ select row_number() 
+ 		over
+ (order by c.cartNum desc) 
+ 		as num, 
+ c.cartNum, c.userid, c.goodsNumber, c.cartStock, c.addDate,
+ g.goodsName, g.dcPrice, g.Point, g.releaseDate, g.img,g.sellCount  
+ 		from tbl_cart c
+ 		 inner join 
+ 		tbl_product g 
+ 			on 
+ 	c.goodsNumber = g.goodsNumber 
+ 			where
+ 	c.userid = #{userid};
+  </select>
+
+<!-- 장바구니 삭제 -->
+  <delete id="deleteCart">
+  	delete from tbl_cart 
+  	where cartNum = #{cartNum} and userid = #{userid};
+  </delete>
+
+
+ <!--  주문  -->
+  <insert id="order">
+  insert into tbl_order (orderId,userid,orderRec,orderPhone,userZipe,userAddr,userAddr2,extraAddr,Amount,Point) 
+  values (#{orderId},#{userid},#{orderRec},#{orderPhone},#{userZipe},#{userAddr},#{userAddr2},#{extraAddr},#{Amount},#{Point})
+  </insert> 
+
+ <!--  주문 상세  -->
+  <insert id="orderDetail">
+  insert into order_detail ( orderId, goodsNumber, cartStock)
+		    select  #{orderId}, goodsNumber, cartStock
+		    from tbl_cart
+  </insert>
+  
+   <!-- 주문완료후 장바구니 비우기  -->
+  <delete id="CartClear">
+  	delete from tbl_cart where userid=#{userid}
+  </delete>
+  
+  <!-- 주문 목록 -->
+  <select id="orderList" resultType = "com.album.vo.OrderListVO">
+		select * from tbl_order o 
+		inner join 
+		order_detail d 
+			on 
+		o.orderId = d.orderId 
+			inner join 
+		tbl_product p 
+			on 
+		d.goodsNumber = p.goodsNumber 
+			where 
+		o.userid= #{userid}  order by orderDate desc ;
+  
+  </select>
+  
+  <!-- 주문 상세보기 -->
+    <select id="orderView" resultType = "com.album.vo.OrderListVO">
+		select * from tbl_order o 
+		inner join 
+		order_detail d 
+			on 
+		o.orderId = d.orderId 
+			inner join 
+		tbl_product p 
+			on 
+		d.goodsNumber = p.goodsNumber 
+			where 
+		o.userid= #{userid}  and o.orderId = #{orderId}
+  
+  </select>
+  
+
+<!--  주문완료시 포인트 추가 -->
+<update id="updatePoint">
+update tbl_member set userPoint = userPoint + #{userPoint}
+</update>
+
+<!--  주문완료시 판매량 증가-->
+<!-- <update id="sellCount">
+ update tbl_product set sellCount = sellCount + #{sellCount} where goodsNumber = #{goodsNumber};
+
+</update>
+-->
+ </mapper>

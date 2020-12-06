@@ -1,0 +1,173 @@
+@charset "EUC-KR";@charset "utf-8";
+ @font-face {
+        font-family: 'NEXON Lv1 Gothic OTF Bold';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+.orderList-container{
+	width: 70%;
+	margin:0 auto;	
+}
+
+.orderList{
+	padding: 10px 0;
+	margin-bottom: 60px;
+}
+.orderList-container>h1{
+	display:block;
+	text-align: center;
+	margin-top: 10px;
+	padding:10px 0;
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	font-size:28px;
+}
+
+.orderList-Info{
+	padding:20px 0;
+
+	
+}
+.orderList-title{
+	background: #f1f1f1;
+	padding:10px 0;
+
+}
+.orderDate, .orderDate-title,
+.orderStock,.orderStock-title,
+.orderPrice,.orderPrice-title,
+.orderdelivery , .orderdelivery-title{
+	width:30%;
+	text-align: center;
+	text-indent: 20px;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+.orderid-title ,.orderid {
+	width: 25%;
+	text-align: center;
+}
+
+.orderInfo-title{
+	text-align: center;
+}
+.orderDate>p{
+	text-indent:20px;
+	
+}
+
+.orderList>li{
+	display:flex;
+	align-items: center;
+	border-bottom: 1px solid #c3c3c3;	
+}
+
+.orderList-Info p{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size:14px;
+}
+.orderview_Btn{
+	width: 100px;
+	margin-top:4px;
+	border:none;
+	background: #f1f1f1;
+	padding:4px 0;
+	cursor: pointer;
+}
+
+.orderInfo{
+	display:flex;
+	align-items: center;
+	margin: 0 auto;
+}
+
+.orderInfo img{
+	
+	display:block;
+	width:80px;
+	height: 80px;
+	margin:0 40px 0 80px;
+}
+
+
+
+/* 주문 상세 보기 */
+
+.delivery{
+	width: 100%;
+	display: flex;
+}
+
+
+.delivery-contianer label{
+	font-size: 18px;
+	font-family: 'Noto Sans KR', sans-serif;
+	display:block;
+	padding: 20px 0;
+	font-weight: 800;
+}
+.delivery-contianer tr{
+	display: flex;
+	height: 60px;
+	border-bottom:1px solid #c3c3c3;
+	font-size: 14px;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.delivery-contianer table{
+	width:70%;
+	border:1px solid #c3c3c3;
+	font-family: 'Noto Sans KR', sans-serif;
+	
+}
+
+.delivery-contianer th{
+	display:block;
+	width: 30%;
+	background: #f1f1f1;
+	line-height: 60px;
+	font-size: 14px;
+
+}
+
+.delivery-contianer td{
+	line-height: 60px;
+	text-indent: 20px;
+	font-size: 14px;
+	
+}
+
+.amount{
+	width: 25%;
+	display: flex;
+	height: 60px;
+	padding: 20px 0;
+}
+
+.amount>span{
+	font-size: 18px;
+	font-family: 'Noto Sans KR', sans-serif;
+	display:block;
+	font-weight: 800;
+	
+	
+}
+
+.amount p{
+	display:block;
+	font-size: 18px;
+	font-family: 'Noto Sans KR', sans-serif;
+	color : red;
+}
+
+.deliveryChange{
+	display: flex;
+}
+
+.deliveryChange button{
+	width: 70px;
+	padding:4px 0;
+	margin: 4px;
+	border:none;
+	background: #f1f1f1;
+}

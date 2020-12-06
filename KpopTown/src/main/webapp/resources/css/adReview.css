@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+ @font-face {
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+  }
+  
+ 
+ .Review{
+ 	width:70%;
+ 	margin:0 auto;
+ } 
+ 
+ .Review>h1{
+ font-family: 'NEXON Lv1 Gothic OTF Bold';
+ font-size:24px;
+ text-align: center;
+ margin-top:40px;
+ }
+ 
+ .review-Info{
+ 	background:#fafafa;
+ 	margin: 40px 0;
+ }
+ 
+ .review-Info li{
+ 	display: flex;
+ 	padding:12px 0;
+ 	border-bottom: 1px solid #c3c3c3;
+ 	align-items: center;
+ }
+ 
+.review-Info li>span{
+	display:block;
+	width: 20%;
+	text-align: center;
+
+} 
+ .review-Info span{
+ 	font-family: 'Noto Sans KR', sans-serif;
+ 	font-size:16px;
+ 	font-weight: 700;
+ }
+ 
+ .review-Info p,a{
+ 	font-family: 'Noto Sans KR', sans-serif;
+ 	font-size:14px;	
+ 	color:#000;
+ }
+ 
+
+ .rwCon>p{
+ 	padding:5px 0 20px 0;
+ }
+ 
+
+ .rwCon{
+ 	position: relative;
+ }
+ 
+ .delete{
+ 	width:100px;
+ 	height : 30px;
+ 	position: absolute;
+ 	right: 20px;
+ 	bottom: 0;
+ }
+ 
+ .delete input{
+ 	border:none;
+ 	padding:10px 0;
+ 	background: #355989;
+ 	color:#fff;
+ }

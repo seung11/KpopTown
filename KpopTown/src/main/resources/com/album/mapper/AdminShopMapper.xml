@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="com.album.mapper.AdminShopMapper">
+
+	 <!-- 전체 주문 목록  -->
+ <select id="orderList" resultType="com.album.vo.OrderListVO">
+  		select * from tbl_order o 
+		inner join 
+		order_detail d 
+			on 
+		o.orderId = d.orderId 
+			inner join 
+		tbl_product p 
+			on 
+		d.goodsNumber = p.goodsNumber 
+ </select>
+ 
+ 
+<!-- 특정 주문 상세 목록 -->  
+<select id="orderView" resultType="com.album.vo.OrderListVO">
+	  select * from tbl_order o 
+		  inner join 
+  		order_detail d 
+  			on 
+ 	 o.orderId = d.orderId 
+		inner join 
+	   tbl_product p 
+			on 
+	d.goodsNumber = p.goodsNumber 
+		 where 
+	o.orderId = #{orderId}
+</select>
+  
+<!-- 배송 상태 변경  --> 
+<update id="delivery">
+	update tbl_order 
+		set 
+	Delivery = #{Delivery} 
+		where
+	orderId=#{orderId}	
+</update> 
+
+<!-- 상품리뷰 관리 (전체 목록)-->
+<select id="allReview" resultType="com.album.vo.ReviewVO">
+select * from tbl_review r 
+	inner join 
+tbl_member m 
+	on 
+r.userid = m.userid;
+</select>  	
+
+
+<!-- 리뷰 삭제 -->
+<delete id="ReviewDelete">
+delete from tbl_review 
+	where
+rwNumber = #{rwNumber}	
+</delete>
+
+
+<!-- 이벤트 등록 -->
+<insert id="eventInsert">
+insert into  tbl_event 
+(evNumber,evTitle,evCon,evImg) 
+	values
+ (#{evNumber},#{evTitle},#{evCon},#{evImg}); 
+</insert>
+
+
+<!-- 이벤트 목록 -->
+<select id="eventList"  resultType="com.album.vo.EventVO">
+	select * from tbl_event 
+		order by
+		evNumber desc
+</select>
+
+<!--  이벤트 상세 -->
+<select id="eventView" resultType="com.album.vo.EventVO">
+	select * from tbl_event 
+		where
+	evNumber =  #{evNumber}
+</select>
+
+<!-- 이벤트수정 -->
+ <update id="evmodify" parameterType="com.album.vo.EventVO">
+	update tbl_event 
+		set
+	evTitle = #{evTitle} , evCon = #{evCon} , evImg = #{evImg}		 
+			 where 
+	evNumber = #{evNumber}			
+</update>
+	
+<!-- 이벤트 삭제 -->
+<delete id="evdelete">
+	delete from tbl_event 
+		where
+	evNumber = #{evNumber};
+</delete>
+  
+  </mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.album.mapper.MemberMapper">
+  
+  <!-- 회원가입 -->
+ <insert id="signup">	
+insert into tbl_member(userid,userPass,userName,userPhone,userEmail,userZipe,userAddr,userAddr2,extraAddr) 
+values(#{userid},#{userPass},#{userName},#{userPhone},#{userEmail},#{userZipe},#{userAddr},#{userAddr2},#{extraAddr});
+</insert>
+  	
+  	
+ <!--  로그인 -->
+<select id="signin" resultType="com.album.vo.MemberVO">
+	select * from tbl_member where userid = #{userid} and userPass = #{userPass};
+</select>
+
+
+
+<!-- 아이디 중복검사 -->
+
+<select id="idcheck" parameterType="String"  resultType="int">
+ select count(*) from tbl_member where userid = #{userid}
+</select>
+
+<!-- 아이디 찿기 -->
+<select id="findid" resultType="String"> 
+select userid 
+	from
+ tbl_member 
+	where 
+userEmail=#{userEmail}
+	 and 
+userName = #{userName}
+	 or 
+userPhone=#{userPhone} 
+	and 
+userName = #{userName}
+</select>
+
+
+<!-- 비밀번호 찾기  -->
+<!-- 비밀번호 변경 -->
+<update id="findpw" parameterType="com.album.vo.MemberVO" >
+update tbl_member
+set userPass = #{userPass}
+where userEmail=#{userEmail} and userid=#{userid} 
+</update>
+
+<!-- 비밀번호 변경 하기 위해서 email select -->
+<select id="finduser" resultType="String">
+select userEmail from tbl_member where userid=#{userid}
+</select>
+
+<!-- 회원정보 수정 -->
+<update id="memModify" parameterType="com.album.vo.MemberVO">
+	update tbl_member
+		set 
+	userPass = #{userPass} , userPhone=#{userPhone} , userEmail=#{userEmail}, 
+	userZipe = #{userZipe} , userAddr = #{userAddr} , userAddr2 = #{userAddr2}, 
+	extraAddr = #{extraAddr} 
+		where
+	userid=#{userid} 
+</update>
+
+<!-- 회원탈퇴 -->
+<delete id="memDelet">
+	delete from tbl_member 
+	   	where 
+	userid = #{userid} 
+		and
+	userPass = #{userPass}
+</delete>
+
+</mapper>
+
+
+
+
+

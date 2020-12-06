@@ -1,0 +1,376 @@
+@charset "utf-8";
+
+@font-face { font-family: 'GmarketSansMedium'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+     font-weight: normal; font-style: normal; 
+    }
+
+    @font-face {
+        font-family: 'NEXON Lv1 Gothic OTF Bold';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+*{
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+   
+}
+
+/*aside랑 본문 분리 */
+.main{
+	height:100%;
+	display: flex;
+}
+
+
+/*====================	
+		aside
+=====================*/
+
+.aside{
+	width:20%;
+	background: #355989;
+	text-align: center;
+	padding : 60px 0;
+
+}
+
+.aside li{
+	display:block;
+	padding: 20px 0;
+	
+}
+
+.aside a{
+	font-family: 'GmarketSansMedium'; 
+	color : #fff;
+}
+
+/*============================
+			main
+=============================*/
+
+
+.admin-Info {
+	display:flex;
+	align-items: center;
+	width:800px;
+	margin:0 auto;
+	flex-wrap: wrap;
+	padding: 40px 0;
+}
+
+.admin-Info li{
+	display:block;
+	width: 30%;
+	margin: 20px auto;
+	padding:40px 0 ;
+}
+
+
+.admin-Info i{
+	display:block;
+	font-size: 52px;
+	color: #c3c3c3;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.admin-Info li{
+	display:block;
+	text-align:center;
+	border:1px solid #c3c3c3;
+	background:#f3f3f3;
+
+}
+
+.admin-Info a{
+	display:block;
+	color:#333;
+	font-size: 18px;
+	padding:10px 0;
+	font-weight: 700;
+	font-family: 'Noto Sans KR', sans-serif;
+	letter-spacing: 2px;
+	
+}
+
+/*============================
+	관리자 페이지 container 영역
+==============================*/
+
+.admin-container{
+	width: 70%;
+	margin: 0 auto;
+}
+
+.admin-container>h1 {
+	padding:40px 0 ;
+	text-align: center;
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	font-size:24px;
+}
+
+
+/* 상품 목록 */
+
+.drop-menu>ul{
+	display:none;
+}
+
+ .list-title, .list-info{
+	width: 100%;
+	display:flex;
+	align-items:center;
+	margin:0 auto;
+	padding:15px 0;
+	text-align: center;
+	
+}
+
+.list-title{
+	background : #355989;
+	padding:20px 0;
+	border-bottom:  1px solid #c3c3c3;
+}
+
+.list-title li {
+	color:#fff;
+	
+}
+
+.list-info{
+	border-bottom: 1px solid #2222;
+
+}
+
+.list-info li{
+	text-align: center;
+}
+.list-info a{
+	color:#000;
+}
+
+
+.pageing{
+	width:500px;
+	padding:10px 0;
+	margin:0 auto;
+	
+	
+}
+.page_Btn{
+	width: 50%;
+	display:flex;
+	justify-content:space-around;
+	margin:0 auto;
+	
+}
+
+.page_Btn li{
+
+	text-align: center;
+	margin:0 auto;
+	background : #355989;
+	border:1px solid #ccc;
+}
+.page_Btn i{
+	color:#fff;
+	line-height : 28px;
+}
+
+.pageNum a{
+	font-family: 'GmarketSansMedium'; 
+	font-size:12px;
+	line-height : 28px;
+	color:#fff; 
+	text-align: center;
+}
+
+
+/* 상품 등록  insert*/
+/*=============================
+		insert
+==============================*/
+
+.input{
+	width: 90%;
+	display:block;
+	padding: 10px 0;
+	margin:0 auto;
+}
+
+
+
+.input input{
+	margin:6px 0;
+	line-height: 25px;
+}
+
+#goodsdetail{
+	height: 500px;
+}
+.category{
+	margin:6px 0;
+	padding: 8px 0;
+}
+
+.submit-wrap{
+	width:200px;
+	margin:0 auto;
+
+}
+.submit{
+	width:200px;
+	padding:10px 0;
+	border:none;
+	background: #355989;
+	color:#fff; 
+
+}
+
+.sub_Btn input{
+	display:block;
+	width:300px;
+	padding: 12px 0;
+	margin: 12px auto;
+	border:1px solid #000;
+	background: #355989;
+	color:#fff;
+}
+
+
+/* 상세 보기 view */
+
+.poster-title{
+
+	margin:40px auto;
+	display:flex;
+	justify-content:space-between;
+	
+}
+
+.poster-img{
+	width:40%;
+	
+
+}
+
+.poster-img img{
+	width: 100%;
+	height:450px;
+
+}
+
+.view-text{
+	width: 60%;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.hanteo{
+	width:100%;
+	
+}
+
+.ht,.gaon{
+	border:1px solid #ccc;
+	width:100%;
+}
+
+.title{
+	font-size:24px;
+	font-weight: 800;
+	padding: 20px 0;
+}
+
+.price-Container{
+	padding:10px 0;
+}
+.original{
+	padding:10px 0;
+}
+.orig-price{
+	text-decoration: line-through;
+	font-size:20px;
+	
+	
+}
+
+.dc{
+	color:red;
+	font-size:20px;
+}
+
+.dcprice{
+	color:red;
+	font-size:22px;
+	font-weight: bold;
+}
+
+.view-text{
+	width: 45%;
+}
+
+.view-text li{
+	padding:8px 0;
+	display:flex;
+	font-size:14px;
+	font-weight:400;
+}
+.info-img img{
+	width: 100%;
+}
+
+
+table{
+
+	border: 4px solid #ccc;
+}
+
+.detail {
+
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight : 300;
+}
+
+.detail img{
+	display:block;
+	margin:0 auto;
+}
+
+tb>ul{
+	disply:block;
+	padding: 20px 0;
+}
+td li{
+	font-size:14px;
+	padding: 8px 4px;
+	
+}
+
+.ad_Btn{
+	width: 300px;
+	display: flex;
+	margin: 0 auto;
+	padding: 40px 0;
+}
+
+.ad_Btn button {
+	display: block;
+	width: 150px;
+	padding: 10px;
+	margin: 0 10px;
+	border:1px solid #355989;
+	background: #355989;
+	color: #fff;
+	text-align: center;
+}
+
+.ad_Btn button:hover{
+	background: #fff;
+	border:1px solid #355989;
+	color: #000;
+	transition:ease 0.3s;
+}

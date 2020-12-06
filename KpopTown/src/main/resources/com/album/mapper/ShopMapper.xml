@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+ <mapper namespace="com.album.mapper.ShopMapper">
+ 
+<!-- 제품리스트 -->
+  <select id="list" resultType="com.album.vo.productVO">
+	 select *from tbl_product p  
+	 inner join product_cate c 
+	 on p.cateCode = c.cateCode 
+	 where p.cateCode=#{cateCode} 
+	 order by goodsNumber desc
+ </select>
+ 
+<!-- 페이징 리스트 --> 
+<select id="listPage" resultType="com.album.vo.productVO">
+<![CDATA[
+	select 
+		* 
+	from tbl_product p
+		inner join 
+	product_cate c 
+			on 
+	p.cateCode = c.cateCode
+	      where 
+	p.cateCode=#{cateCode} 
+	      order by 
+	goodsnumber desc
+	     limit 
+	#{pageStart},#{amount};
+]]>
+	</select> 
+
+<!-- 개시물 총 갯수  -->	
+<select id="totalCount" resultType="int">
+select  count(*)  from tbl_product
+</select>
+
+
+<!-- 상세페이지 --> 
+ <select id="view" resultType="com.album.vo.productVO">
+	select * from tbl_product p 
+	inner join product_cate c 
+	on p.cateCode = c.cateCode 
+	where goodsNumber =  #{goodsNumber}
+</select>
+ 
+ <!-- 상품 리뷰 -->
+ <select id="reviewRegist" >
+ insert into tbl_review (goodsNumber , userid ,rwNumber,rwTitle,rwCon) 
+    values (#{goodsNumber},#{userid}, #{rwNumber},#{rwTitle},#{rwCon})
+    
+ </select>
+
+
+<!-- 리뷰 목록 -->
+ <select id="reviewList" resultType="com.album.vo.ReviewVO">
+  select * from tbl_review r 
+ join tbl_member m 
+ on r.userid = m.userid 
+ where goodsNumber = #{goodsNumber} order by rwNumber desc
+ </select>
+
+ 
+<!-- 리뷰 삭제 -->
+<delete id="reviewDelete">
+	   delete from tbl_review 
+	   where rwNumber = #{rwNumber}
+	   and userid = #{userid}
+</delete> 
+
+<!-- 아이디 체크 -->
+<select id="reviewIdCheck" resultType="String">
+select userid 
+from tbl_review 
+where rwNumber = #{rwNumber}
+</select>
+
+  <!-- 이벤트 불러오기 -->
+ <select id="eventList" resultType="com.album.vo.EventVO">
+ select * from tbl_event
+ </select>
+  <!-- 이벤트 상세페이지 --> 
+ <select id="evenView" resultType="com.album.vo.EventVO">
+	 select * from tbl_event
+	where evNumber =  #{evNumber}
+</select>
+
+
+
+ </mapper>
